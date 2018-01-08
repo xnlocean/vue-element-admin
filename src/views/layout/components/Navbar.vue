@@ -19,7 +19,8 @@
 
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
-          <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
+          <img class="user-avatar" v-if=" !avatar==false " :src="avatar+'?imageView2/1/w/80/h/80'">
+          <img class="user-avatar" v-else :src="HeardImg">
           <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu slot="dropdown">
@@ -28,11 +29,6 @@
               首页
             </el-dropdown-item>
           </router-link>
-          <a target='_blank' href="https://github.com/PanJiaChen/vue-element-admin/">
-            <el-dropdown-item>
-              项目地址
-            </el-dropdown-item>
-          </a>
           <el-dropdown-item divided>
             <span @click="logout" style="display:block;">退出登录</span>
           </el-dropdown-item>
@@ -50,8 +46,14 @@ import ErrorLog from '@/components/ErrorLog'
 import Screenfull from '@/components/Screenfull'
 import LangSelect from '@/components/LangSelect'
 import ThemePicker from '@/components/ThemePicker'
+import HeardImg from '@/assets/del.png'
 
 export default {
+  data() {
+    return {
+      HeardImg
+    }
+  },
   components: {
     Breadcrumb,
     Hamburger,

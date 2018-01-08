@@ -23,6 +23,7 @@ service.interceptors.request.use(config => {
 })
 
 // respone拦截器
+// 获取数据之前的操作
 service.interceptors.response.use(
   response => response,
   /**
