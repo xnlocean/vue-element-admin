@@ -45,7 +45,57 @@ export default new Router({
 })
 
 export const asyncRouterMap = [
-
+  {
+    path: '/userManagement',
+    component: Layout,
+    children: [{
+      path: 'index',
+      component: _import('userManagement/index'),
+      name: 'userManagement',
+      meta: { title: 'userManagement', icon: 'icon', noCache: true }
+    }]
+  },
+  {
+    path: '/commodityManagement',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'commodityManagement',
+    meta: {
+      title: 'commodityManagement',
+      icon: 'icon'
+    },
+    children: [
+      { path: 'classManagement', component: _import('commodityManagement/classManagement/index'), name: 'classManagement', meta: { title: 'classManagement', icon: 'table' }},
+      { path: 'commodityListManagement', component: _import('commodityManagement/commodityManagement/index'), name: 'commodityListManagement', meta: { title: 'commodityListManagement', icon: 'table' }}
+    ]
+  },
+  {
+    path: '/activityManagement',
+    component: Layout,
+    children: [{
+      path: 'index',
+      component: _import('activityManagement/index'),
+      name: 'activityManagement',
+      meta: { title: 'activityManagement', icon: 'icon', noCache: true }
+    }]
+  },
+  {
+    path: '/resourceManagement',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'resourceManagement',
+    meta: {
+      title: 'resourceManagement',
+      icon: 'icon'
+    },
+    children: [
+      { path: 'appManagement', component: _import('resourceManagement/appManagement/index'), name: 'appManagement', meta: { title: 'appManagement', icon: 'table' }},
+      { path: 'pageManagement', component: _import('resourceManagement/pageManagement/index'), name: 'pageManagement', meta: { title: 'pageManagement', icon: 'table' }},
+      { path: 'pushManagement', component: _import('resourceManagement/pushManagement/index'), name: 'pushManagement', meta: { title: 'pushManagement', icon: 'table' }},
+      { path: 'SMSManagement', component: _import('resourceManagement/SMSManagement/index'), name: 'SMSManagement', meta: { title: 'SMSManagement', icon: 'table' }},
+      { path: 'versionManagement', component: _import('resourceManagement/versionManagement/index'), name: 'versionManagement', meta: { title: 'versionManagement', icon: 'table' }}
+    ]
+  },
   {
     path: '/example',
     component: Layout,

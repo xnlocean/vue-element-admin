@@ -68,15 +68,14 @@ export default {
       deep: true,
       handler(val) {
         this.setOptions(val)
-        console.log(val)
       }
     }
   },
   methods: {
-    setOptions({ expectedData, actualData, ydata } = {}) {
+    setOptions({ expectedData, actualData } = {}) {
       this.chart.setOption({
         xAxis: {
-          data: ydata,
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           boundaryGap: false,
           axisTick: {
             show: false
@@ -102,6 +101,7 @@ export default {
           }
         },
         legend: {
+          data: ['expected', 'actual']
         },
         series: [{
           name: 'expected', itemStyle: {

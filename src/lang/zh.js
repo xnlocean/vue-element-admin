@@ -1,6 +1,17 @@
 export default {
   route: {
-    dashboard: '首页',
+    dashboard: '分析统计',
+    userManagement: '用户管理',
+    commodityManagement: '商品管理',
+    classManagement: '分类管理',
+    commodityListManagement: '商品列表管理',
+    activityManagement: '活动管理',
+    resourceManagement: '资源管理',
+    appManagement: 'app广告管理',
+    pageManagement: '静态页面管理',
+    pushManagement: '推送管理',
+    SMSManagement: '短信管理',
+    versionManagement: '版本管理',
     introduction: '简述',
     documentation: '文档',
     permission: '权限测试页',

@@ -1,6 +1,7 @@
 export default {
   route: {
-    dashboard: 'Dashboard',
+    dashboard: 'Analysis-statistics',
+    userManagement: 'User-management',
     introduction: 'Introduction',
     documentation: 'Documentation',
     permission: 'Permission',
