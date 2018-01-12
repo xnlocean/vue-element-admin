@@ -1,7 +1,8 @@
 <template>
 <div>
     <el-table
-        :data="tableData"
+        :data="list"
+        v-loading="listLoading"
         border
         style="width: 100%">
         <el-table-column
@@ -29,45 +30,55 @@
 </template>
 
 <script>
-import fetchList from "@/api/article";
+import { listPage } from '@/api/article'
+import waves from '@/directive/waves' // 水波纹指令
+
 export default {
+  name: 'complexTable',
+  directives: {
+    waves
+  },
   data() {
     return {
       tableKey: 0,
-      tableData: null,
+      list: null,
       total: null,
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 10,
+        limit: 5,
         importance: undefined,
         title: undefined,
         type: undefined,
-        sort: "+id"
+        sort: '+id'
       }
     }
   },
+  created() {
+    this.getList()
+  },
   methods: {
     getList() {
-      this.listLoading = true;
-      fetchList(this.listQuery).then(response => {
-        this.list = response.data.items;
-        this.total = response.data.total;
-        this.listLoading = false;
-      });
+      this.listLoading = true
+      listPage(this.listQuery).then(response => {
+        this.list = response.data.items
+        this.total = response.data.total
+        this.listLoading = false
+      })
     },
     handleFilter() {
-      this.listQuery.page = 1;
-      this.getList();
+      this.listQuery.page = 1
+      this.getList()
     },
     handleSizeChange(val) {
-      this.listQuery.limit = val;
-      this.getList();
+      console.log(val)
+      this.listQuery.limit = val
+      this.getList()
     },
     handleCurrentChange(val) {
-      this.listQuery.page = val;
-      this.getList();
+      this.listQuery.page = val
+      this.getList()
     }
   }
-};
+}
 </script>

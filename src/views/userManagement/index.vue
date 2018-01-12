@@ -134,7 +134,12 @@
 </template>
 
 <script>
-import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
+import {
+  fetchList,
+  fetchPv,
+  createArticle,
+  updateArticle
+} from '@/api/article'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 
@@ -164,7 +169,7 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 20,
+        limit: 10,
         importance: undefined,
         title: undefined,
         type: undefined,
@@ -172,7 +177,10 @@ export default {
       },
       importanceOptions: [1, 2, 3],
       calendarTypeOptions,
-      sortOptions: [{ label: '按ID升序列', key: '+id' }, { label: '按ID降序', key: '-id' }],
+      sortOptions: [
+        { label: '按ID升序列', key: '+id' },
+        { label: '按ID降序', key: '-id' }
+      ],
       statusOptions: ['published', 'draft', 'deleted'],
       showAuditor: false,
       temp: {
@@ -193,9 +201,20 @@ export default {
       dialogPvVisible: false,
       pvData: [],
       rules: {
-        type: [{ required: true, message: 'type is required', trigger: 'change' }],
-        timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
-        title: [{ required: true, message: 'title is required', trigger: 'blur' }]
+        type: [
+          { required: true, message: 'type is required', trigger: 'change' }
+        ],
+        timestamp: [
+          {
+            type: 'date',
+            required: true,
+            message: 'timestamp is required',
+            trigger: 'change'
+          }
+        ],
+        title: [
+          { required: true, message: 'title is required', trigger: 'blur' }
+        ]
       },
       downloadLoading: false
     }
@@ -265,7 +284,7 @@ export default {
       })
     },
     createData() {
-      this.$refs['dataForm'].validate((valid) => {
+      this.$refs['dataForm'].validate(valid => {
         if (valid) {
           this.temp.id = parseInt(Math.random() * 100) + 1024 // mock a id
           this.temp.author = '原创作者'
@@ -292,7 +311,7 @@ export default {
       })
     },
     updateData() {
-      this.$refs['dataForm'].validate((valid) => {
+      this.$refs['dataForm'].validate(valid => {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
           tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
@@ -335,20 +354,28 @@ export default {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
         const tHeader = ['时间', '地区', '类型', '标题', '重要性']
-        const filterVal = ['timestamp', 'province', 'type', 'title', 'importance']
+        const filterVal = [
+          'timestamp',
+          'province',
+          'type',
+          'title',
+          'importance'
+        ]
         const data = this.formatJson(filterVal, this.list)
         excel.export_json_to_excel(tHeader, data, 'table数据')
         this.downloadLoading = false
       })
     },
     formatJson(filterVal, jsonData) {
-      return jsonData.map(v => filterVal.map(j => {
-        if (j === 'timestamp') {
-          return parseTime(v[j])
-        } else {
-          return v[j]
-        }
-      }))
+      return jsonData.map(v =>
+        filterVal.map(j => {
+          if (j === 'timestamp') {
+            return parseTime(v[j])
+          } else {
+            return v[j]
+          }
+        })
+      )
     }
   }
 }

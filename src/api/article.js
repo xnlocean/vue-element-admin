@@ -8,6 +8,14 @@ export function fetchList(query) {
   })
 }
 
+export function listPage(query) {
+  return request({
+    url: '/article/page',
+    method: 'get',
+    params: query
+  })
+}
+
 export function fetchArticle() {
   return request({
     url: '/article/detail',
