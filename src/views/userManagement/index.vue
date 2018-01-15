@@ -350,22 +350,6 @@ export default {
         this.dialogPvVisible = true
       })
     },
-    handleDownload() {
-      this.downloadLoading = true
-      import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['时间', '地区', '类型', '标题', '重要性']
-        const filterVal = [
-          'timestamp',
-          'province',
-          'type',
-          'title',
-          'importance'
-        ]
-        const data = this.formatJson(filterVal, this.list)
-        excel.export_json_to_excel(tHeader, data, 'table数据')
-        this.downloadLoading = false
-      })
-    },
     formatJson(filterVal, jsonData) {
       return jsonData.map(v =>
         filterVal.map(j => {
