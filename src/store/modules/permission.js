@@ -1,5 +1,4 @@
 import { asyncRouterMap, constantRouterMap } from '@/router'
-
 /**
  * 通过meta.role判断是否与当前用户权限匹配
  * @param roles
@@ -47,7 +46,7 @@ const permission = {
       return new Promise(resolve => {
         const { roles } = data
         let accessedRouters
-        if (roles.indexOf('admin') >= 2) {
+        if (roles.indexOf('admin') >= -1) {
           accessedRouters = asyncRouterMap
         } else {
           accessedRouters = filterAsyncRouter(asyncRouterMap, roles)

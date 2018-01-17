@@ -5,6 +5,7 @@ export default {
     commodityManagement: '商品管理',
     classManagement: '分类管理',
     commodityListManagement: '商品列表管理',
+    addManagement: '新增',
     activityManagement: '活动管理',
     resourceManagement: '资源管理',
     appManagement: 'app广告管理',

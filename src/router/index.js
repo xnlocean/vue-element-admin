@@ -80,6 +80,18 @@ export const asyncRouterMap = [
     }]
   },
   {
+    path: '/add',
+    component: Layout,
+    children: [{
+      path: 'changeActivit',
+      component: _import('activityManagement/changeActivit'),
+      name: 'changeActivit',
+      meta: { title: 'changeActivit', icon: 'icon' }
+    }],
+    hidden: true
+
+  },
+  {
     path: '/resourceManagement',
     component: Layout,
     redirect: 'noredirect',
@@ -90,7 +102,9 @@ export const asyncRouterMap = [
     },
     children: [
       { path: 'appManagement', component: _import('resourceManagement/appManagement/index'), name: 'appManagement', meta: { title: 'appManagement', icon: 'table' }},
+      { path: 'addManagement', component: _import('resourceManagement/appManagement/addManagement'), name: 'addManagement', meta: { title: 'addManagement', icon: 'table' }, hidden: true },
       { path: 'pageManagement', component: _import('resourceManagement/pageManagement/index'), name: 'pageManagement', meta: { title: 'pageManagement', icon: 'table' }},
+      { path: 'changePage', component: _import('resourceManagement/pageManagement/changePage'), name: 'changePage', meta: { title: 'changePage', icon: 'table' }, hidden: true },
       { path: 'pushManagement', component: _import('resourceManagement/pushManagement/index'), name: 'pushManagement', meta: { title: 'pushManagement', icon: 'table' }},
       { path: 'SMSManagement', component: _import('resourceManagement/SMSManagement/index'), name: 'SMSManagement', meta: { title: 'SMSManagement', icon: 'table' }},
       { path: 'versionManagement', component: _import('resourceManagement/versionManagement/index'), name: 'versionManagement', meta: { title: 'versionManagement', icon: 'table' }}

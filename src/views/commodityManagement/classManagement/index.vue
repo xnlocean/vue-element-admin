@@ -40,7 +40,6 @@ export default{
     }
   },
   mounted() {
-    console.log(api)
     this.initExpand()
   },
   methods: {
